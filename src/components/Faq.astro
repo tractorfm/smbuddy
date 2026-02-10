@@ -1,0 +1,186 @@
+---
+const faqs = [
+  {
+    q: "How quickly will I see results?",
+    a: "Most clients receive their first working deliverable within 24-48 hours of submitting a clear request with access credentials ready. Larger projects are broken into smaller milestones shipped frequently.",
+  },
+  {
+    q: 'What does "one request at a time" mean?',
+    a: "You can add unlimited requests to your Trello board. We work on one at a time to ensure quality and fast turnaround. Once a request is complete, we immediately start the next one in your queue.",
+  },
+  {
+    q: "Do you build full SaaS products?",
+    a: "No. SMBuddy focuses on internal tools and automations that save your team time – not public-facing multi-tenant software. If your need is closer to a product build, we'll be transparent about that upfront.",
+  },
+  {
+    q: "Where does my data live?",
+    a: "On your systems. We work inside your accounts (Google Workspace, Slack, n8n, etc.) and your infrastructure. We do not host your data or production tools on our servers.",
+  },
+  {
+    q: "Can I pause my subscription?",
+    a: "Yes. You can pause once every 15 days for up to 90 days total. Billing freezes and your remaining days carry forward when you resume.",
+  },
+  {
+    q: "Who actually does the work?",
+    a: "Boris Karulin – a tech professional with 15+ years of hands-on IT experience. This is not outsourced to anonymous freelancers.",
+  },
+  {
+    q: "What if I'm not satisfied?",
+    a: "We iterate until you are. Each request has clear success criteria defined upfront. If a deliverable doesn't meet the agreed criteria, we revise it at no extra cost.",
+  },
+];
+---
+
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-header" data-animate>
+      <span class="eyebrow">FAQ</span>
+      <h2>Questions & answers</h2>
+    </div>
+
+    <div class="faq-list">
+      {
+        faqs.map((faq, i) => (
+          <details class="faq-item" data-animate style={`--stagger: ${i + 1}`}>
+            <summary>
+              <span class="faq-question">{faq.q}</span>
+              <span class="faq-chevron" aria-hidden="true">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </span>
+            </summary>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>{faq.a}</p>
+              </div>
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  // Animate <details> open/close with grid-template-rows
+  document.querySelectorAll(".faq-item").forEach((el) => {
+    const summary = el.querySelector("summary");
+    const answer = el.querySelector(".faq-answer") as HTMLElement;
+    if (!summary || !answer) return;
+
+    summary.addEventListener("click", (e) => {
+      e.preventDefault();
+      const details = el as HTMLDetailsElement;
+
+      if (details.open) {
+        // Closing: animate then remove open
+        answer.style.gridTemplateRows = "0fr";
+        answer.addEventListener(
+          "transitionend",
+          () => {
+            details.open = false;
+          },
+          { once: true }
+        );
+      } else {
+        // Opening: set open then animate
+        details.open = true;
+        requestAnimationFrame(() => {
+          answer.style.gridTemplateRows = "1fr";
+        });
+      }
+    });
+  });
+</script>
+
+<style>
+  .faq-list {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .faq-item {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: border-color var(--duration-normal) var(--ease-out);
+  }
+
+  .faq-item[open] {
+    border-color: var(--border-accent);
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary::marker {
+    display: none;
+    content: "";
+  }
+
+  .faq-question {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-primary);
+    line-height: 1.4;
+  }
+
+  .faq-chevron {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    color: var(--text-tertiary);
+    transition: transform var(--duration-normal) var(--ease-out);
+  }
+
+  .faq-item[open] .faq-chevron {
+    transform: rotate(180deg);
+    color: var(--accent-purple);
+  }
+
+  .faq-answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows var(--duration-normal) var(--ease-out);
+  }
+
+  .faq-answer-inner {
+    overflow: hidden;
+  }
+
+  .faq-answer p {
+    padding: 0 var(--space-lg) var(--space-lg);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+</style>

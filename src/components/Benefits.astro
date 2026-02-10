@@ -1,0 +1,120 @@
+---
+const benefits = [
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M2 12h20"/><path d="M12 2v20"/><circle cx="7" cy="17" r="1.5"/><circle cx="17" cy="7" r="1.5"/></svg>`,
+    title: "AI Assistants",
+    text: "Inbox triage, meeting summaries, daily briefings, and personal AI agents tailored to your role and workflow.",
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 17V13"/><path d="M12 17V9"/><path d="M17 17V11"/></svg>`,
+    title: "KPI Dashboards",
+    text: "Sales funnels, pipeline health, churn signals – live data from your tools, not another spreadsheet.",
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+    title: "Lightweight CRM",
+    text: "Custom pipeline stages, automated follow-ups, and summaries aligned to your actual sales process.",
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="12" y1="2" x2="12" y2="22"/></svg>`,
+    title: "n8n Automations",
+    text: "Multi-step workflows across your apps. Triggers, logic, and actions – no code, fully maintainable.",
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="8" height="8" rx="2"/><rect x="14" y="2" width="8" height="8" rx="2"/><rect x="2" y="14" width="8" height="8" rx="2"/><rect x="14" y="14" width="8" height="8" rx="2"/><path d="M10 6h4"/><path d="M6 10v4"/><path d="M18 10v4"/><path d="M10 18h4"/></svg>`,
+    title: "Platform Integrations",
+    text: "Google Workspace, Slack, Telegram, WhatsApp, Stripe – connected and orchestrated in your stack.",
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>`,
+    title: "Custom Internal Tools",
+    text: "Bespoke tools for your team's specific pain points. If it saves you time, we can build it.",
+  },
+];
+---
+
+<section class="section" id="benefits">
+  <div class="container">
+    <div class="section-header" data-animate>
+      <span class="eyebrow">What We Build</span>
+      <h2>Practical AI tools for how<br />you actually work</h2>
+      <p>
+        We focus on internal tools and automations that save your team real
+        time – not shiny demos that collect dust.
+      </p>
+    </div>
+
+    <div class="benefits-grid">
+      {
+        benefits.map((b, i) => (
+          <div class="benefit-card" data-animate style={`--stagger: ${i + 1}`}>
+            <div class="benefit-icon" set:html={b.icon} />
+            <h3>{b.title}</h3>
+            <p>{b.text}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .benefit-card {
+    padding: var(--space-xl);
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    transition:
+      border-color var(--duration-normal) var(--ease-out),
+      transform var(--duration-normal) var(--ease-out);
+  }
+
+  .benefit-card:hover {
+    border-color: var(--border-accent);
+    transform: translateY(-3px);
+  }
+
+  .benefit-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    background: linear-gradient(
+      135deg,
+      rgba(168, 85, 247, 0.12),
+      rgba(59, 130, 246, 0.12)
+    );
+    color: var(--accent-purple);
+    margin-bottom: var(--space-md);
+  }
+
+  .benefit-card h3 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .benefit-card p {
+    color: var(--text-secondary);
+    font-size: 0.925rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 900px) {
+    .benefits-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .benefits-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

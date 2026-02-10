@@ -1,0 +1,147 @@
+---
+const steps = [
+  {
+    num: "01",
+    title: "Book intro call",
+    text: "A 15-20 minute call to understand your business, current tools, and where AI can make the biggest impact.",
+  },
+  {
+    num: "02",
+    title: "Get your workspace",
+    text: "You receive a shared Trello board – your async command center for requests, updates, and feedback.",
+  },
+  {
+    num: "03",
+    title: "Submit requests",
+    text: "Add tasks anytime. We work on one at a time, first-come first-served, to keep quality and momentum high.",
+  },
+  {
+    num: "04",
+    title: "Build and iterate",
+    text: "Working increments shipped frequently. Review asynchronously. No waiting for scheduled sprints.",
+  },
+  {
+    num: "05",
+    title: "Handoff and own it",
+    text: "Complete documentation, access details, and a short guide. Everything runs in your stack – you own it fully.",
+  },
+];
+---
+
+<section class="section" id="how">
+  <div class="container">
+    <div class="section-header" data-animate>
+      <span class="eyebrow">How It Works</span>
+      <h2>From idea to working tool<br />in five steps</h2>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-line" aria-hidden="true"></div>
+      {
+        steps.map((step, i) => (
+          <div class="timeline-step" data-animate style={`--stagger: ${i + 1}`}>
+            <div class="step-marker">
+              <span class="step-num">{step.num}</span>
+            </div>
+            <div class="step-content">
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .timeline {
+    position: relative;
+    max-width: 640px;
+    margin: 0 auto;
+    padding-left: 60px;
+  }
+
+  .timeline-line {
+    position: absolute;
+    left: 22px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      var(--accent-purple),
+      var(--accent-blue),
+      var(--accent-teal)
+    );
+    opacity: 0.3;
+    border-radius: 1px;
+  }
+
+  .timeline-step {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-lg);
+    padding-bottom: var(--space-2xl);
+  }
+
+  .timeline-step:last-child {
+    padding-bottom: 0;
+  }
+
+  .step-marker {
+    position: absolute;
+    left: -60px;
+    top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--bg-elevated);
+    border: 2px solid var(--accent-purple);
+    flex-shrink: 0;
+    z-index: 1;
+  }
+
+  .step-num {
+    font-family: "Inter Tight", sans-serif;
+    font-weight: 800;
+    font-size: 0.8rem;
+    color: var(--accent-purple);
+    letter-spacing: 0.02em;
+  }
+
+  .step-content {
+    padding-top: 6px;
+  }
+
+  .step-content h3 {
+    margin-bottom: var(--space-sm);
+    font-size: 1.15rem;
+  }
+
+  .step-content p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
+  @media (max-width: 640px) {
+    .timeline {
+      padding-left: 48px;
+    }
+
+    .step-marker {
+      left: -48px;
+      width: 36px;
+      height: 36px;
+    }
+
+    .step-num {
+      font-size: 0.7rem;
+    }
+  }
+</style>

@@ -1,0 +1,87 @@
+---
+const cards = [
+  {
+    icon: "⚡",
+    title: "Async-First",
+    text: "Trello-based workflow. Submit requests anytime. No meetings required – just clear requests and fast delivery.",
+  },
+  {
+    icon: "🔒",
+    title: "Your Environment",
+    text: "Everything runs on your accounts and infrastructure. We configure, you own. Zero vendor lock-in.",
+  },
+  {
+    icon: "🚀",
+    title: "24-48h First Result",
+    text: "From a clear request to a working deliverable. Not a mockup, not a proposal – a working tool.",
+  },
+];
+---
+
+<section class="section" id="proof">
+  <div class="container">
+    <div class="proof-grid">
+      {
+        cards.map((card, i) => (
+          <div class="proof-card" data-animate style={`--stagger: ${i}`}>
+            <span class="proof-icon">{card.icon}</span>
+            <h3>{card.title}</h3>
+            <p>{card.text}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .proof-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .proof-card {
+    padding: var(--space-xl);
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    transition:
+      border-color var(--duration-normal) var(--ease-out),
+      transform var(--duration-normal) var(--ease-out);
+  }
+
+  .proof-card:hover {
+    border-color: var(--border-accent);
+    transform: translateY(-3px);
+  }
+
+  .proof-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    font-size: 1.4rem;
+    border-radius: var(--radius-sm);
+    background: var(--bg-elevated);
+    margin-bottom: var(--space-md);
+  }
+
+  .proof-card h3 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .proof-card p {
+    color: var(--text-secondary);
+    font-size: 0.925rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 900px) {
+    .proof-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+  }
+</style>
