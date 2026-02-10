@@ -3,50 +3,34 @@
 
 <section class="section" id="booking">
   <div class="container">
-    <div class="booking-grid">
-      <div class="booking-copy" data-animate>
-        <span class="eyebrow">Get Started</span>
-        <h2>Book your<br />intro call.</h2>
-        <p class="booking-desc">
-          20-25 minutes to define your goals, map your current stack, and identify
-          your first highest-ROI automation.
-        </p>
-        <p class="booking-note">
-          No commitment. No pitch deck. Just a practical conversation about what
-          AI can do for your business.
-        </p>
-        <div class="booking-alt">
-          <p>Prefer async? Reach out directly:</p>
-          <div class="booking-links">
-            <a href="https://x.com/karulin" target="_blank" rel="noopener" class="contact-link">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-              </svg>
-              <span>@karulin</span>
-            </a>
-            <a href="https://t.me/thatguy" target="_blank" rel="noopener" class="contact-link">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-              </svg>
-              <span>@thatguy</span>
-            </a>
-          </div>
-        </div>
-      </div>
+    <div class="booking-header" data-animate>
+      <span class="eyebrow">Get Started</span>
+      <h2>Book your intro call.</h2>
+      <p class="booking-desc">
+        20-25 minutes to define your goals, map your current stack, and identify
+        your first highest-ROI automation. No commitment. No pitch deck.
+      </p>
+    </div>
 
-      <div class="booking-embed" data-animate style="--stagger: 2">
-        <div id="cal-inline" class="cal-container"></div>
-        <p class="cal-fallback">
-          Can't see the calendar?
-          <a
-            href="https://cal.com/smbuddy/intro"
-            target="_blank"
-            rel="noopener"
-          >
-            Book directly on Cal.com
-          </a>
-        </p>
-      </div>
+    <div class="booking-embed" data-animate style="--stagger: 1">
+      <div id="cal-inline" class="cal-container"></div>
+      <p class="cal-fallback">
+        Can't see the calendar?
+        <a
+          href="https://cal.com/smbuddy/intro"
+          target="_blank"
+          rel="noopener"
+        >
+          Book directly on Cal.com
+        </a>
+      </p>
+    </div>
+
+    <div class="booking-alt" data-animate style="--stagger: 2">
+      <p>
+        Prefer async?
+        <a href="mailto:hey@smbuddy.co" class="contact-link">hey@smbuddy.co</a>
+      </p>
     </div>
   </div>
 </section>
@@ -100,75 +84,30 @@
 </script>
 
 <style>
-  .booking-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-3xl);
-    align-items: start;
+  .booking-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
   }
 
-  .booking-copy {
-    padding-top: var(--space-lg);
-  }
-
-  .booking-copy h2 {
-    margin-bottom: var(--space-lg);
-  }
-
-  .booking-desc {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
+  .booking-header h2 {
     margin-bottom: var(--space-md);
   }
 
-  .booking-note {
-    font-size: 0.95rem;
-    color: var(--text-tertiary);
-    line-height: 1.6;
-    margin-bottom: var(--space-xl);
-  }
-
-  .booking-alt p {
-    font-size: 0.85rem;
-    color: var(--text-tertiary);
-    margin-bottom: var(--space-sm);
-  }
-
-  .booking-links {
-    display: flex;
-    gap: var(--space-md);
-    flex-wrap: wrap;
-  }
-
-  .contact-link {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-sm);
-    padding: 8px 16px;
-    font-size: 0.875rem;
-    font-weight: 500;
+  .booking-desc {
+    max-width: 580px;
+    margin: 0 auto;
+    font-size: 1.05rem;
     color: var(--text-secondary);
-    background: var(--bg-elevated);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-pill);
-    transition:
-      color var(--duration-fast),
-      border-color var(--duration-fast);
-  }
-
-  .contact-link:hover {
-    color: var(--text-primary);
-    border-color: var(--border-accent);
+    line-height: 1.7;
   }
 
   .booking-embed {
-    min-height: 560px;
+    margin-bottom: var(--space-xl);
   }
 
   .cal-container {
     width: 100%;
-    min-height: 560px;
+    min-height: 480px;
     overflow: hidden;
     border-radius: var(--radius-lg);
     border: 1px solid var(--border);
@@ -187,18 +126,30 @@
     text-underline-offset: 2px;
   }
 
-  @media (max-width: 900px) {
-    .booking-grid {
-      grid-template-columns: 1fr;
-      gap: var(--space-2xl);
-    }
+  .booking-alt {
+    text-align: center;
+  }
 
-    .booking-embed {
-      min-height: 620px;
-    }
+  .booking-alt p {
+    font-size: 0.9rem;
+    color: var(--text-tertiary);
+  }
 
+  .contact-link {
+    color: var(--accent-purple);
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color var(--duration-fast);
+  }
+
+  .contact-link:hover {
+    color: var(--text-primary);
+  }
+
+  @media (max-width: 640px) {
     .cal-container {
-      min-height: 620px;
+      min-height: 560px;
     }
   }
 </style>
