@@ -12,7 +12,14 @@
       </p>
     </div>
 
-    <div class="booking-embed" data-animate style="--stagger: 1">
+    <div class="booking-alt" data-animate style="--stagger: 1">
+      <p>
+        Prefer async?
+        <a href="mailto:hey@smbuddy.co" class="contact-link">hey@smbuddy.co</a>
+      </p>
+    </div>
+
+    <div class="booking-embed" data-animate style="--stagger: 2">
       <div id="cal-inline" class="cal-container"></div>
       <p class="cal-fallback">
         Can't see the calendar?
@@ -23,13 +30,6 @@
         >
           Book directly on Cal.com
         </a>
-      </p>
-    </div>
-
-    <div class="booking-alt" data-animate style="--stagger: 2">
-      <p>
-        Prefer async?
-        <a href="mailto:hey@smbuddy.co" class="contact-link">hey@smbuddy.co</a>
       </p>
     </div>
   </div>
@@ -102,7 +102,6 @@
   }
 
   .booking-embed {
-    margin-bottom: var(--space-xl);
   }
 
   .cal-container {
@@ -128,6 +127,7 @@
 
   .booking-alt {
     text-align: center;
+    margin-bottom: var(--space-2xl);
   }
 
   .booking-alt p {
