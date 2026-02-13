@@ -4,10 +4,26 @@ const benefits = [
     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M2 12h20"/><path d="M12 2v20"/><circle cx="7" cy="17" r="1.5"/><circle cx="17" cy="7" r="1.5"/></svg>`,
     title: "AI Assistants",
     text: "Inbox triage, meeting summaries, daily briefings, and personal AI agents tailored to your role and workflow.",
+    logos: [{ src: "/logos/openclaw.svg", alt: "OpenClaw" }],
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="12" y1="2" x2="12" y2="22"/></svg>`,
+    title: "Automation Flows",
+    text: "Multi-step workflows across your apps. Triggers, logic, and actions – no code, fully maintainable.",
+    logos: [{ src: "/logos/n8n.svg", alt: "n8n" }],
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/></svg>`,
+    title: "Chat Bots",
+    text: "Customer-facing and internal bots for WhatsApp and Telegram – connected to your data, your tone, and your processes.",
+    logos: [
+      { src: "/logos/whatsapp.svg", alt: "WhatsApp" },
+      { src: "/logos/telegram.svg", alt: "Telegram" },
+    ],
   },
   {
     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 17V13"/><path d="M12 17V9"/><path d="M17 17V11"/></svg>`,
-    title: "KPI Dashboards",
+    title: "Dashboards & Control Panels",
     text: "Sales funnels, pipeline health, churn signals – live data from your tools, not another spreadsheet.",
   },
   {
@@ -16,9 +32,24 @@ const benefits = [
     text: "Custom pipeline stages, automated follow-ups, and summaries aligned to your actual sales process.",
   },
   {
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="12" y1="2" x2="12" y2="22"/></svg>`,
-    title: "n8n Automations",
-    text: "Multi-step workflows across your apps. Triggers, logic, and actions – no code, fully maintainable.",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M8 14l2-3 2 2 3-4"/></svg>`,
+    title: "SEO Workers",
+    text: "Automated keyword tracking, content optimization, and search performance monitoring that runs in the background.",
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><path d="M12 2v4"/><path d="M12 18v4"/><path d="M2 12h4"/><path d="M18 12h4"/></svg>`,
+    title: "Lead Scanners",
+    text: "Automated prospecting across directories, social platforms, and public databases – delivered to your CRM or inbox.",
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
+    title: "Scrapers & Trackers",
+    text: "Price monitoring, competitor tracking, and data collection pipelines – structured and scheduled.",
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>`,
+    title: "Content Generation",
+    text: "Blog posts, social media, newsletters, and product descriptions – drafted by AI, reviewed by you.",
   },
   {
     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="8" height="8" rx="2"/><rect x="14" y="2" width="8" height="8" rx="2"/><rect x="2" y="14" width="8" height="8" rx="2"/><rect x="14" y="14" width="8" height="8" rx="2"/><path d="M10 6h4"/><path d="M6 10v4"/><path d="M18 10v4"/><path d="M10 18h4"/></svg>`,
@@ -30,6 +61,12 @@ const benefits = [
     title: "Custom Internal Tools",
     text: "Bespoke tools for your team's specific pain points. If it saves you time, we can build it.",
   },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3m0 12v3M3 12h3m12 0h3m-3.5-6.5L16 7m-8 10l-2.5 2.5M20.5 18.5L18 16M5.5 7L3.5 5.5"/><circle cx="12" cy="12" r="4"/></svg>`,
+    title: "Whatever AI does next",
+    text: "The field moves fast. We stay on top of it so you don't have to – and bring the best new capabilities to your stack.",
+    ghost: true,
+  },
 ];
 ---
 
@@ -37,7 +74,7 @@ const benefits = [
   <div class="container">
     <div class="section-header" data-animate>
       <span class="eyebrow">What We Build</span>
-      <h2>Practical AI tools for how<br />you actually work</h2>
+      <h2>Practical AI tools for<br />the way you work</h2>
       <p>
         We focus on internal tools and automations
         that save you or your team real time.
@@ -47,7 +84,19 @@ const benefits = [
     <div class="benefits-grid">
       {
         benefits.map((b, i) => (
-          <div class="benefit-card" data-animate style={`--stagger: ${i + 1}`}>
+          <div class={`benefit-card${b.logos ? " has-logos" : ""}${b.ghost ? " benefit-ghost" : ""}`} data-animate style={`--stagger: ${i + 1}`}>
+            {b.logos && (
+              <div class="benefit-logos">
+                {b.logos.map((logo) => (
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    class="badge-logo"
+                    loading="lazy"
+                  />
+                ))}
+              </div>
+            )}
             <div class="benefit-icon" set:html={b.icon} />
             <h3>{b.title}</h3>
             <p>{b.text}</p>
@@ -66,6 +115,7 @@ const benefits = [
   }
 
   .benefit-card {
+    position: relative;
     padding: var(--space-xl);
     background: var(--bg-surface);
     border: 1px solid var(--border);
@@ -104,6 +154,51 @@ const benefits = [
     color: var(--text-secondary);
     font-size: 0.925rem;
     line-height: 1.6;
+  }
+
+  .benefit-logos {
+    position: absolute;
+    top: var(--space-xl);
+    right: var(--space-xl);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 20px;
+  }
+
+  .badge-logo {
+    height: 20px;
+    width: auto;
+    opacity: 0.6;
+    transition: opacity var(--duration-normal) var(--ease-out);
+  }
+
+  .benefit-card:hover .badge-logo {
+    opacity: 0.9;
+  }
+
+  .benefit-ghost {
+    background: transparent;
+    border-style: dashed;
+    border-color: var(--border);
+  }
+
+  .benefit-ghost .benefit-icon {
+    background: transparent;
+    color: var(--text-tertiary);
+  }
+
+  .benefit-ghost h3 {
+    color: var(--text-tertiary);
+  }
+
+  .benefit-ghost p {
+    color: var(--text-tertiary);
+  }
+
+  .benefit-ghost:hover {
+    border-color: var(--border-accent);
+    border-style: dashed;
   }
 
   @media (max-width: 900px) {
