@@ -22,7 +22,7 @@ const faqs = [
   },
   {
     q: "Who actually does the work?",
-    a: "Boris Karulin, Kirill Liubimov – tech professionals with 15+ years of hands-on IT experience. This is not outsourced to anonymous freelancers but we can grow our team in the future.",
+    a: `<a href="https://linkedin.com/in/borkasm/" target="_blank" rel="noopener">Boris Karulin</a>, Kirill L. – tech professionals with 15+ years of hands-on IT experience. This is not outsourced to anonymous freelancers but we can grow our team in the future.`,
   },
   {
     q: "What if I'm not satisfied?",
@@ -61,7 +61,7 @@ const faqs = [
             </summary>
             <div class="faq-answer">
               <div class="faq-answer-inner">
-                <p>{faq.a}</p>
+                <p set:html={faq.a} />
               </div>
             </div>
           </details>
@@ -182,5 +182,15 @@ const faqs = [
     font-size: 0.95rem;
     color: var(--text-secondary);
     line-height: 1.7;
+  }
+
+  .faq-answer a {
+    color: var(--accent-blue);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .faq-answer a:hover {
+    color: var(--accent-teal);
   }
 </style>
