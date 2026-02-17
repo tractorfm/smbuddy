@@ -2,7 +2,7 @@
 layout: ../layouts/LegalLayout.astro
 title: Terms of Service
 ---
-# SMBuddy – Terms of Service
+# Terms of Service
 
 **Effective date:** February 16, 2026
 

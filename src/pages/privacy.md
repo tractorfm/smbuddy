@@ -2,7 +2,7 @@
 layout: ../layouts/LegalLayout.astro
 title: Privacy Policy
 ---
-# SMBuddy Privacy Policy
+# Privacy Policy
 
 **Effective date:** 16 February 2026
 
