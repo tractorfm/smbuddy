@@ -127,9 +127,14 @@ You agree to:
 - **Maximum pause consequence:** If a pause reaches **180 days**, your subscription will be **cancelled automatically**, and any remaining/unused days or entitlements are **forfeited**.
 - **Price changes after long pauses:** If **60 days** have passed since the start of a pause, SMBuddy may, upon reactivation, update your subscription price to our then-current pricing for the Services.
 
-9.6. **Price stability and annual updates.** If Section 9.5 does not apply, your subscription price is fixed for you and may be updated no more than **once per year** (e.g., at renewal), with reasonable prior notice.
+9.6. **Provider-initiated pause (service unavailability).** If SMBuddy is temporarily unable to provide the Services (for example due to illness, vacation, or similar unavailability), we may place your subscription on a **forced pause** for the duration of such unavailability.
+- **No degradation of terms:** A provider-initiated pause does **not** count toward the “once every 7 days” limit and does **not** trigger any forfeiture, cancellation, or price-update rights described in Section 9.5.
+- **Pricing protection:** Your subscription price and conditions remain unchanged due to a provider-initiated pause.
+- **Billing:** During a provider-initiated pause, billing will be paused and you will not be charged for the paused period (unless mandatory law or the Order requires otherwise).
 
-9.7. **No refunds unless required by law.** Unless mandatory law says otherwise, subscription fees are non-refundable.
+9.7. **Price stability and annual updates.** If Section 9.5 does not apply, your subscription price is fixed for you and may be updated no more than **once per year** (e.g., at renewal), with reasonable prior notice.
+
+9.8. **No refunds unless required by law.** Unless mandatory law says otherwise, subscription fees are non-refundable.
 
 ---
 
