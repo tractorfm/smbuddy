@@ -6,7 +6,7 @@ const benefits = [
     text: "Inbox triage, meeting summaries, daily briefings, and personal AI agents tailored to your role and workflow.",
     logos: [
       { src: "/logos/openclaw.svg", alt: "OpenClaw" },
-      { src: "/logos/chatcode.svg", alt: "chatcode.dev" },
+      { text: "chatcode.dev" },
     ],
   },
   {
@@ -90,14 +90,18 @@ const benefits = [
           <div class={`benefit-card${b.logos ? " has-logos" : ""}${b.ghost ? " benefit-ghost" : ""}`} data-animate style={`--stagger: ${i + 1}`}>
             {b.logos && (
               <div class="benefit-logos">
-                {b.logos.map((logo) => (
-                  <img
-                    src={logo.src}
-                    alt={logo.alt}
-                    class="badge-logo"
-                    loading="lazy"
-                  />
-                ))}
+                {b.logos.map((logo) =>
+                  logo.text ? (
+                    <span class="badge-text">{logo.text}</span>
+                  ) : (
+                    <img
+                      src={logo.src}
+                      alt={logo.alt}
+                      class="badge-logo"
+                      loading="lazy"
+                    />
+                  )
+                )}
               </div>
             )}
             <div class="benefit-icon" set:html={b.icon} />
@@ -169,11 +173,11 @@ const benefits = [
     height: 20px;
   }
 
-  .benefit-logos:has(.badge-logo[alt="chatcode.dev"]) {
+  .benefit-logos:has(.badge-text) {
     flex-direction: column;
     align-items: flex-end;
     height: auto;
-    gap: 8px;
+    gap: 6px;
   }
 
   .badge-logo {
@@ -183,11 +187,19 @@ const benefits = [
     transition: opacity var(--duration-normal) var(--ease-out);
   }
 
-  .badge-logo[alt="chatcode.dev"] {
-    height: 26px;
+  .badge-text {
+    font-family: "Rubik", "Inter Tight", "Inter", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--text-primary);
+    opacity: 0.6;
+    transition: opacity var(--duration-normal) var(--ease-out);
   }
 
-  .benefit-card:hover .badge-logo {
+  .benefit-card:hover .badge-logo,
+  .benefit-card:hover .badge-text {
     opacity: 0.9;
   }
 
