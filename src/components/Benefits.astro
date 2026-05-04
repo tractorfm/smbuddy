@@ -169,11 +169,22 @@ const benefits = [
     height: 20px;
   }
 
+  .benefit-logos:has(.badge-logo[alt="chatcode.dev"]) {
+    flex-direction: column;
+    align-items: flex-end;
+    height: auto;
+    gap: 8px;
+  }
+
   .badge-logo {
     height: 20px;
     width: auto;
     opacity: 0.6;
     transition: opacity var(--duration-normal) var(--ease-out);
+  }
+
+  .badge-logo[alt="chatcode.dev"] {
+    height: 26px;
   }
 
   .benefit-card:hover .badge-logo {
