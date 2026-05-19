@@ -8,6 +8,9 @@ const {
   title = "SMBuddy – Subscription AI Integration for Small Business",
   description = "We help you adopt AI with practical tools – assistants, automations, dashboards. We are humans who build with AI for you, on a flat monthly subscription.",
 } = Astro.props;
+
+const gaMeasurementId = (import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? "").trim();
+const hasGoogleAnalytics = /^G-[A-Z0-9]+$/i.test(gaMeasurementId);
 ---
 
 <!doctype html>
@@ -35,6 +38,27 @@ const {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:creator" content="@karulin" />
     <meta name="twitter:image" content="https://smbuddy.co/og-cover.jpg?1" />
+
+    {
+      hasGoogleAnalytics && (
+        <>
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(gaMeasurementId)}`}
+          />
+          <script define:vars={{ gaMeasurementId }}>
+            window.dataLayer = window.dataLayer || [];
+            window.gtag =
+              window.gtag ||
+              function gtag() {
+                window.dataLayer.push(arguments);
+              };
+            window.gtag("js", new Date());
+            window.gtag("config", gaMeasurementId);
+          </script>
+        </>
+      )
+    }
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
