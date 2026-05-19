@@ -173,7 +173,9 @@ No system is perfectly secure. You are responsible for keeping your credentials 
 
 We use cookies and similar technologies for:
 - **Essential functionality** – logins, sessions, security
-- **Analytics** – to understand usage and improve SMBuddy
+- **Optional analytics on our public pages** – if you allow analytics cookies, we load Google Analytics to understand which pages and campaigns help people evaluate SMBuddy
+
+Google Analytics is disabled by default and is loaded only after you choose **Allow analytics** in the cookie notice. If you decline, we store that choice locally and do not load Google Analytics.
 
 ### Advertising pixels (optional)
 We may add advertising/measurement pixels in the future (for example, **Meta Pixel** or **Google** tags) to measure campaign performance and improve marketing. If we do, we will:
@@ -258,4 +260,3 @@ Questions or requests about privacy:
 **privacy@smbuddy.co**  
 Holy Traction OÜ  
 Sepapaja tn 6, 15551 Tallinn, Estonia
-

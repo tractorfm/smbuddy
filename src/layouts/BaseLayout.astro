@@ -39,27 +39,6 @@ const hasGoogleAnalytics = /^G-[A-Z0-9]+$/i.test(gaMeasurementId);
     <meta name="twitter:creator" content="@karulin" />
     <meta name="twitter:image" content="https://smbuddy.co/og-cover.jpg?1" />
 
-    {
-      hasGoogleAnalytics && (
-        <>
-          <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(gaMeasurementId)}`}
-          />
-          <script define:vars={{ gaMeasurementId }}>
-            window.dataLayer = window.dataLayer || [];
-            window.gtag =
-              window.gtag ||
-              function gtag() {
-                window.dataLayer.push(arguments);
-              };
-            window.gtag("js", new Date());
-            window.gtag("config", gaMeasurementId);
-          </script>
-        </>
-      )
-    }
-
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -74,6 +53,119 @@ const hasGoogleAnalytics = /^G-[A-Z0-9]+$/i.test(gaMeasurementId);
   </head>
   <body>
     <slot />
+
+    {
+      hasGoogleAnalytics && (
+        <script define:vars={{ gaMeasurementId }}>
+          const COOKIE_CONSENT_STORAGE_KEY = "smbuddy_cookie_consent_v1";
+
+          function ensureGoogleTag() {
+            window.dataLayer = window.dataLayer || [];
+            window.gtag =
+              window.gtag ||
+              function gtag() {
+                window.dataLayer.push(arguments);
+              };
+          }
+
+          function setDefaultGoogleConsent() {
+            ensureGoogleTag();
+            window.gtag("consent", "default", {
+              ad_storage: "denied",
+              ad_user_data: "denied",
+              ad_personalization: "denied",
+              analytics_storage: "denied",
+            });
+          }
+
+          function updateGoogleAnalyticsConsent(granted) {
+            ensureGoogleTag();
+            window.gtag("consent", "update", {
+              analytics_storage: granted ? "granted" : "denied",
+              ad_storage: "denied",
+              ad_user_data: "denied",
+              ad_personalization: "denied",
+            });
+          }
+
+          function loadGoogleAnalytics() {
+            if (document.querySelector(`script[data-smbuddy-ga="${gaMeasurementId}"]`)) return;
+            window.gtag("js", new Date());
+            window.gtag("config", gaMeasurementId);
+
+            const script = document.createElement("script");
+            script.async = true;
+            script.dataset.smbuddyGa = gaMeasurementId;
+            script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(gaMeasurementId)}`;
+            document.head.appendChild(script);
+          }
+
+          function storedCookieConsent() {
+            try {
+              const value = window.localStorage.getItem(COOKIE_CONSENT_STORAGE_KEY);
+              return value === "accepted" || value === "declined" ? value : null;
+            } catch {
+              return null;
+            }
+          }
+
+          function storeCookieConsent(choice) {
+            try {
+              window.localStorage.setItem(COOKIE_CONSENT_STORAGE_KEY, choice);
+            } catch {
+              // If storage is unavailable, keep the runtime choice for this page load only.
+            }
+          }
+
+          function installCookieConsent() {
+            setDefaultGoogleConsent();
+            const existing = storedCookieConsent();
+            if (existing === "accepted") {
+              updateGoogleAnalyticsConsent(true);
+              loadGoogleAnalytics();
+              return;
+            }
+            if (existing === "declined") {
+              updateGoogleAnalyticsConsent(false);
+              return;
+            }
+
+            const banner = document.createElement("section");
+            banner.className = "cookie-consent";
+            banner.setAttribute("aria-label", "Cookie consent");
+            banner.innerHTML = `
+              <div class="cookie-consent__copy">
+                <strong>Analytics cookies?</strong>
+                <span>We use Google Analytics only if you allow it, to understand which pages help people evaluate SMBuddy. No ads cookies are enabled.</span>
+              </div>
+              <div class="cookie-consent__actions">
+                <a class="cookie-consent__link" href="/privacy/">Privacy</a>
+                <button class="cookie-consent__button cookie-consent__button--ghost" type="button" data-cookie-consent="declined">Decline</button>
+                <button class="cookie-consent__button cookie-consent__button--primary" type="button" data-cookie-consent="accepted">Allow analytics</button>
+              </div>
+            `;
+
+            banner.addEventListener("click", (event) => {
+              const target = event.target instanceof HTMLElement
+                ? event.target.closest("[data-cookie-consent]")
+                : null;
+              if (!target) return;
+              const choice = target.dataset.cookieConsent === "accepted" ? "accepted" : "declined";
+              storeCookieConsent(choice);
+              updateGoogleAnalyticsConsent(choice === "accepted");
+              if (choice === "accepted") {
+                loadGoogleAnalytics();
+              }
+              banner.remove();
+            });
+
+            document.body.appendChild(banner);
+          }
+
+          installCookieConsent();
+        </script>
+      )
+    }
 
     <script>
       // Scroll-triggered reveal animations
