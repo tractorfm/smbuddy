@@ -314,22 +314,15 @@ p {
     white-space: nowrap;
 }
 
-.cookie-consent__link {
-    padding: 8px 4px;
-    color: var(--text-tertiary);
-    font-size: 0.85rem;
-    font-weight: 600;
-}
-
-.cookie-consent__link:hover {
-    color: var(--text-primary);
-}
-
 .cookie-consent__button {
-    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
     padding: 0 14px;
     border: 1px solid transparent;
     border-radius: var(--radius-pill);
+    line-height: 1;
     color: var(--text-primary);
     background: transparent;
     cursor: pointer;
@@ -345,12 +338,14 @@ p {
 
 .cookie-consent__button--ghost {
     border-color: var(--border);
+    background: rgba(255, 255, 255, 0.03);
 }
 
 .cookie-consent__button--primary {
-    color: #fff;
+    color: #080b10;
     font-weight: 700;
-    background: linear-gradient(135deg, var(--accent-blue), var(--accent-teal));
+    background: #f5f7fb;
+    border-color: rgba(255, 255, 255, 0.82);
 }
 
 /* ===== Responsive ===== */
