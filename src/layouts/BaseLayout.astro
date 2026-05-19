@@ -126,7 +126,21 @@ const hasGoogleAnalytics = /^G-[A-Z0-9]+$/i.test(gaMeasurementId);
             }
           }
 
-          function installCookieConsent() {
+          async function visitorRequiresCookieConsent() {
+            try {
+              const response = await fetch("/api/consent-region", {
+                cache: "no-store",
+                headers: { Accept: "application/json" },
+              });
+              if (!response.ok) return true;
+              const data = await response.json();
+              return data?.requires_consent !== false;
+            } catch {
+              return true;
+            }
+          }
+
+          async function installCookieConsent() {
             document.querySelectorAll("[data-cookie-settings]").forEach((trigger) => {
               trigger.hidden = false;
               trigger.addEventListener("click", () => {
@@ -142,6 +156,13 @@ const hasGoogleAnalytics = /^G-[A-Z0-9]+$/i.test(gaMeasurementId);
             }
             if (existing === "declined") {
               updateGoogleAnalyticsConsent(false);
+              return;
+            }
+
+            const requiresConsent = await visitorRequiresCookieConsent();
+            if (!requiresConsent) {
+              updateGoogleAnalyticsConsent(true);
+              loadGoogleAnalytics();
               return;
             }
 
@@ -182,7 +203,7 @@ const hasGoogleAnalytics = /^G-[A-Z0-9]+$/i.test(gaMeasurementId);
             document.body.appendChild(banner);
           }
 
-          installCookieConsent();
+          void installCookieConsent();
         </script>
       )
     }
