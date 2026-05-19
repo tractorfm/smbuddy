@@ -39,6 +39,25 @@ const hasGoogleAnalytics = /^G-[A-Z0-9]+$/i.test(gaMeasurementId);
     <meta name="twitter:creator" content="@karulin" />
     <meta name="twitter:image" content="https://smbuddy.co/og-cover.jpg?1" />
 
+    {
+      hasGoogleAnalytics && (
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          window.gtag =
+            window.gtag ||
+            function gtag() {
+              window.dataLayer.push(arguments);
+            };
+          window.gtag("consent", "default", {
+            ad_storage: "denied",
+            ad_user_data: "denied",
+            ad_personalization: "denied",
+            analytics_storage: "denied",
+          });
+        </script>
+      )
+    }
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -66,16 +85,6 @@ const hasGoogleAnalytics = /^G-[A-Z0-9]+$/i.test(gaMeasurementId);
               function gtag() {
                 window.dataLayer.push(arguments);
               };
-          }
-
-          function setDefaultGoogleConsent() {
-            ensureGoogleTag();
-            window.gtag("consent", "default", {
-              ad_storage: "denied",
-              ad_user_data: "denied",
-              ad_personalization: "denied",
-              analytics_storage: "denied",
-            });
           }
 
           function updateGoogleAnalyticsConsent(granted) {
@@ -118,7 +127,13 @@ const hasGoogleAnalytics = /^G-[A-Z0-9]+$/i.test(gaMeasurementId);
           }
 
           function installCookieConsent() {
-            setDefaultGoogleConsent();
+            document.querySelectorAll("[data-cookie-settings]").forEach((trigger) => {
+              trigger.hidden = false;
+              trigger.addEventListener("click", () => {
+                showCookieConsentBanner(true);
+              });
+            });
+
             const existing = storedCookieConsent();
             if (existing === "accepted") {
               updateGoogleAnalyticsConsent(true);
@@ -130,12 +145,18 @@ const hasGoogleAnalytics = /^G-[A-Z0-9]+$/i.test(gaMeasurementId);
               return;
             }
 
+            showCookieConsentBanner(false);
+          }
+
+          function showCookieConsentBanner(manageExisting) {
+            document.querySelector(".cookie-consent")?.remove();
+
             const banner = document.createElement("section");
             banner.className = "cookie-consent";
             banner.setAttribute("aria-label", "Cookie consent");
             banner.innerHTML = `
               <div class="cookie-consent__copy">
-                <strong>Analytics cookies?</strong>
+                <strong>${manageExisting ? "Cookie settings" : "Analytics cookies?"}</strong>
                 <span>We use Google Analytics only if you allow it, to understand which pages help people evaluate SMBuddy. No ads cookies are enabled.</span>
               </div>
               <div class="cookie-consent__actions">

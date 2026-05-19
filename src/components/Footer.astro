@@ -25,6 +25,8 @@
       <a href="/privacy">Privacy Policy</a>
       <span class="dot" aria-hidden="true"></span>
       <a href="/terms">Terms of Service</a>
+      <span class="dot" aria-hidden="true" data-cookie-settings hidden></span>
+      <button type="button" class="footer-link-button" data-cookie-settings hidden>Cookie settings</button>
     </div>
     <p class="footer-copy">&copy; 2025 SMBuddy. All rights reserved.</p>
   </div>
@@ -83,12 +85,22 @@
     font-size: 0.8rem;
   }
 
-  .footer-legal a {
+  .footer-legal a,
+  .footer-link-button {
     color: var(--text-tertiary);
     transition: color var(--duration-fast);
   }
 
-  .footer-legal a:hover {
+  .footer-link-button {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .footer-legal a:hover,
+  .footer-link-button:hover {
     color: var(--text-primary);
   }
 
